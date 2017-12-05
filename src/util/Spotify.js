@@ -1,5 +1,5 @@
-const clientId = '0f82e39e9b5d4d79ba0df074a1e1d940';
-const redirectURI = 'http://localhost:3000/';
+const clientId = '81b1febfe50642f883ecb3ce0a10430b';
+const redirectURI = 'http://localhost:3000/callback';
 let accessToken;
 
 const Spotify = {
@@ -37,9 +37,11 @@ const Spotify = {
 
 },
 
-  search(term) {
+  search(searchTerm) {
 
-    return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
+    const accessToken = Spotify.getAccessToken();
+
+    return fetch('https://cors-anywhere.herokuapp.com/' + `https://api.spotify.com/v1/search?type=track&q=${searchTerm}&limit=10`, {
 
         headers: {
           'Authorization': `Bearer ${accessToken}`
@@ -72,48 +74,48 @@ const Spotify = {
 
     },
 
-    savePlaylist(playlistName, trackUri) {
-
-      if (!playlistName && !trackUri.length) {
-
-        return;
-
-      }
-
-    let accessToken = `${accessToken}`;
-
-    let headers = {
-
-      'Authorization': `Bearer ${accessToken}`
-
-    }
-
-    let userId = '';
-
-    return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
-
-      return response.json();
-
-    }).then(jsonResponse => {
-
-      response.id = userId;
-
-    }).then(fetch (`https://api.spotify.com//v1/users/${userId}/${this.props.playlistName}`, {
-
-      headers: headers,
-      method: 'POST',
-      body: JSON.stringify({name: this.props.playlistName})
-
-    }).then(response => {
-
-      return response.json();
-
-    }).then(jsonResponse => {
-
-      response.id = playlistID;
-
-    }))
-  }
+  //   savePlaylist(playlistName, trackUri) {
+  //
+  //     if (!playlistName && !trackUri.length) {
+  //
+  //       return;
+  //
+  //     }
+  //
+  //   let accessToken = `${accessToken}`;
+  //
+  //   let headers = {
+  //
+  //     'Authorization': `Bearer ${accessToken}`
+  //
+  //   }
+  //
+  //   let userId = '';
+  //
+  //   return fetch(`https://api.spotify.com/v1/me`, {headers: headers}).then(response => {
+  //
+  //     return response.json();
+  //
+  //   }).then(jsonResponse => {
+  //
+  //     response.id = userId;
+  //
+  //   }).then(fetch (`https://api.spotify.com//v1/users/${userId}/${this.props.playlistName}`, {
+  //
+  //     headers: headers,
+  //     method: 'POST',
+  //     body: JSON.stringify({name: this.props.playlistName})
+  //
+  //   }).then(response => {
+  //
+  //     return response.json();
+  //
+  //   }).then(jsonResponse => {
+  //
+  //     response.id = playlistID;
+  //
+  //   }))
+  // }
 
 };
 

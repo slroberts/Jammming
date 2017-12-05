@@ -22,7 +22,7 @@ class App extends Component {
           {
             name: 'The Seed (2.0)',
             artist: 'The Roots, Cody ChestnuTT',
-            album: 'Friday On Elm Street'
+            album: 'Phrenology'
           }
 
         ],
@@ -56,17 +56,17 @@ class App extends Component {
     }
 
     addTrack(track) {
-        let tracks = this.state.playlistTracks;
-        if (this.state.playlistTracks.indexOf(track) === -1) {
-          tracks = tracks.push(track);
-          this.setState({playlistTracks: tracks});
-        }
-      }
+    let updatedplaylist = this.state.playlistTracks;
+    if (this.state.playlistTracks.indexOf(track) === -1) {
+      updatedplaylist.push(track);
+      this.setState({ playlistTracks: updatedplaylist });
+    }
+  }
 
       removeTrack(track) {
         let tracks = this.state.playlistTracks;
         if (tracks.indexOf(track) > -1) {
-          tracks.filter(currentTrack => currentTrack != track.id);
+          tracks.filter(currentTrack => currentTrack !== track.id);
           this.setState({playlistTracks: tracks})
         }
       }
@@ -90,9 +90,11 @@ class App extends Component {
     }
   }
 
-   search(term) {
-     Spotify.search(term);
-   }
+  search(searchTerm) {
+   Spotify.search(searchTerm).then(searchResults => {
+     this.setState({searchResults: searchResults});
+   });
+ }
 
   render() {
 
