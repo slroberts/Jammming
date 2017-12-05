@@ -12,38 +12,11 @@ class App extends Component {
 
       this.state = {
 
-        searchResults: [
-
-          {
-            name: 'Theme Music',
-            artist: 'Fabolous, Jadakiss, Swizz Beatz',
-            album: 'Friday On Elm Street'
-          },
-          {
-            name: 'The Seed (2.0)',
-            artist: 'The Roots, Cody ChestnuTT',
-            album: 'Phrenology'
-          }
-
-        ],
+        searchResults: [],
 
         playlistName: 'New Playlist',
 
-        playlistTracks: [
-
-          {
-            name: 'Its The R',
-            artist: 'Rakim',
-            album: 'The Master'
-          },
-
-          {
-            name: 'The Story of O.J',
-            artist: 'Jay Z',
-            album: '4:44'
-          }
-
-        ]
+        playlistTracks: []
 
       };
 

@@ -11,8 +11,8 @@ class SearchBar extends Component {
 
   search() {
 
-    if(this.state.searchTerm) {
-        this.props.onSearch(this.state.searchTerm);
+    if(this.state.term) {
+        this.props.onSearch(this.state.term);
     }
 
   }
