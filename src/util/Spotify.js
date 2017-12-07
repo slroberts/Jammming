@@ -1,6 +1,6 @@
 let accessToken;
 const clientId = '0b649226fd83459889328f3e6d2206c5';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'http://jammming_app.surge.sh';
 let userId;
 
 
